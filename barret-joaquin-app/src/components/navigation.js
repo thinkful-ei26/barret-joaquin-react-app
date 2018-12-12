@@ -13,30 +13,62 @@ export default class Navigation extends React.Component {
 
   handleFirstButtonClicked() {
     this.setState({ firstButtonClicked: !this.state.firstButtonClicked });
-    console.log(this.state.firstButtonClicked);
+    // console.log('button 1 clicked');
     // console.log('parent heard the click');
   }
 
    handleSecondButtonClicked() {
     this.setState({ secondButtonClicked: !this.state.secondButtonClicked });
     // console.log(this.state.buttonClicked);
-    // console.log('parent heard the click');
+    // console.log('2nd button click');
   }
 
   render() {
-    if (this.state.firstButtonClicked||this.state.secondButtonClicked) {
+    if (this.state.firstButtonClicked) {
       return (
         <div>
-          <Button id='first-button' firstButtonHandler={e => this.handleFirstButtonClicked()} />
-            <Button id='second-button' secondButtonHandler={e => this.handleButtonClicked()} />
-          <ButtonOutput />
+            <Button 
+                name={'Button 1'}
+                ButtonHandler={e => this.handleFirstButtonClicked()}
+             />
+            <ButtonOutput />
+            <Button
+                name={'Button 2'} 
+                ButtonHandler={e => this.handleSecondButtonClicked()} />
         </div>
-      );
-    } else {
+      )
+    }
+    else if (this.state.secondButtonClicked) {
+        return (
+        <section>
+            <Button
+                name={'Button 1'}
+                ButtonHandler={e => this.handleFirstButtonClicked()}
+            />
+            <Button 
+                name={'Button 2'}
+                ButtonHandler={e => this.handleSecondButtonClicked()} />
+            <ButtonOutput />
+        </section>
+        )
         
-      return <Button 
-      secondButtonHandler={e => this.handleSecondButtonClicked()}
-      firstButtonHandler={e => this.handleFirstButtonClicked()} />;
+    }
+    
+    else {
+        
+      return(
+        <section>
+            <Button 
+                name={'Button 1'}
+                ButtonHandler={e => this.handleFirstButtonClicked()} 
+            />
+            <Button 
+                name={'Button 2'}
+                ButtonHandler={e => this.handleSecondButtonClicked()} 
+            />
+        </section> 
+      ) 
+        
     }
   }
 }
