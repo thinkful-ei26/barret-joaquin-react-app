@@ -7,7 +7,8 @@ export default class Navigation extends React.Component {
     super(props);
     this.state = {
       firstButtonClicked: false,
-      secondButtonClicked:false
+      secondButtonClicked:false,
+      firstNestedButtonClicked: false
     };
   }
 
@@ -23,6 +24,12 @@ export default class Navigation extends React.Component {
     // console.log('2nd button click');
   }
 
+  handleNestedButtonClicked() {
+    this.setState({ firstNestedButtonClicked: !this.state.firstNestedButtonClicked });
+    // console.log(this.state.buttonClicked);
+    // console.log('nested button click');
+  }
+
   render() {
     if(this.state.firstButtonClicked && this.state.secondButtonClicked){
 return(
@@ -32,8 +39,17 @@ return(
                 ButtonHandler={e => this.handleFirstButtonClicked()}
              />
             <ButtonOutput 
-                imgLi={<li><img src=''/>this is where the image goes</li>}
-                inputLi={<li><input/>This is the input field</li>} />
+                imgLi={<li><img src='http://lorempixel.com/400/200/'/>this is where the image goes</li>}
+                inputLi={<li><input/>This is the input field</li>} 
+                >
+                    <Button name={'Nested Button'}
+                    ButtonHandler={e => this.handleNestedButtonClicked()}
+                    >
+                        {/* <ButtonOutput>
+                            <p>Hello from A heavily nested scramble</p>
+                        </ButtonOutput> */} 
+                    </ Button>
+            </ButtonOutput>
                
             <Button
                 name={'Button 2'} 
@@ -53,7 +69,16 @@ return(
                 ButtonHandler={e => this.handleFirstButtonClicked()}
              />
             <ButtonOutput 
-            message={'Message for button 1'} />
+                imgLi={<li><img alt="" src='http://lorempixel.com/400/200/'/>this is where the image goes</li>}
+                inputLi={<li><input/>This is the input field</li>} 
+                nestedButton={<Button 
+                    name={'Button of Button 1'}
+                    />}
+                >
+                <Button name={'Nested Button'}
+                    ButtonHandler={e => this.handleNestedButtonClicked()}
+                    />
+            </ ButtonOutput>
             <Button
                 name={'Button 2'} 
                 ButtonHandler={e => this.handleSecondButtonClicked()} />
@@ -71,7 +96,8 @@ return(
                 name={'Button 2'}
                 ButtonHandler={e => this.handleSecondButtonClicked()} />
             <ButtonOutput
-              message={'Message for button 2'} />
+                 linkLi={<li><a href='https://reddit.com'>This is the link</a></li>}
+                  />
         </section>
         )
         

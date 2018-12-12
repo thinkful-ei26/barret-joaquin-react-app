@@ -6,7 +6,8 @@ export default function ButtonOutput(props) {
         <ul>
           {props.imgLi}
           {props.linkLi}
-          {props.inputLi}
+					{props.inputLi}
+					{props.children}
         </ul>
     </div>
     )
