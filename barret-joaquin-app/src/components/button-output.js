@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function ButtonOutput() {
+export default function ButtonOutput(props) {
     return(
         <div className="button-output">
-            <span>Thanks for navigating!</span>
+            <span>{props.message}</span>
         </div>
     )
 }

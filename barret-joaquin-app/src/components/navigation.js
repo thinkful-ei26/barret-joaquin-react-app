@@ -24,6 +24,24 @@ export default class Navigation extends React.Component {
   }
 
   render() {
+    if(this.state.firstButtonClicked && this.state.secondButtonClicked){
+return(
+        <div>
+            <Button 
+                name={'Button 1'}
+                ButtonHandler={e => this.handleFirstButtonClicked()}
+             />
+            <ButtonOutput 
+                message={'Message for button 1'} />
+            <Button
+                name={'Button 2'} 
+                ButtonHandler={e => this.handleSecondButtonClicked()} />
+            <ButtonOutput
+                message={'Message for button 2'} />
+        </div>
+)
+
+    }
     if (this.state.firstButtonClicked) {
       return (
         <div>
@@ -31,14 +49,15 @@ export default class Navigation extends React.Component {
                 name={'Button 1'}
                 ButtonHandler={e => this.handleFirstButtonClicked()}
              />
-            <ButtonOutput />
+            <ButtonOutput 
+            message={'Message for button 1'} />
             <Button
                 name={'Button 2'} 
                 ButtonHandler={e => this.handleSecondButtonClicked()} />
         </div>
       )
     }
-    else if (this.state.secondButtonClicked) {
+     if (this.state.secondButtonClicked) {
         return (
         <section>
             <Button
@@ -48,7 +67,8 @@ export default class Navigation extends React.Component {
             <Button 
                 name={'Button 2'}
                 ButtonHandler={e => this.handleSecondButtonClicked()} />
-            <ButtonOutput />
+            <ButtonOutput
+              message={'Message for button 2'} />
         </section>
         )
         
