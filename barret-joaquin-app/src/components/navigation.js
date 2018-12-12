@@ -32,12 +32,15 @@ return(
                 ButtonHandler={e => this.handleFirstButtonClicked()}
              />
             <ButtonOutput 
-                message={'Message for button 1'} />
+                imgLi={<li><img src=''/>this is where the image goes</li>}
+                inputLi={<li><input/>This is the input field</li>} />
+               
             <Button
                 name={'Button 2'} 
                 ButtonHandler={e => this.handleSecondButtonClicked()} />
             <ButtonOutput
-                message={'Message for button 2'} />
+                 linkLi={<li><a href='https://reddit.com'>This is the link</a></li>}
+                  />
         </div>
 )
 
